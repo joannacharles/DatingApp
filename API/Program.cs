@@ -28,4 +28,16 @@ app.UseAuthorization();// NOTES: WHat r u allowed to do?
 
 app.MapControllers();
 
+using var scope= app.Services.CreateScope();// gives us access to all our services in service class
+var services=scope.ServiceProvider;
+try{
+    var context=services.GetRequiredService<DataContext>();
+    await context.Database.MigrateAsync();
+    await Seed.SeedUsers(context);
+}
+catch(Exception ex)
+{
+    var logger= services.GetService<ILogger<Program>>();
+    logger.LogError(ex,"Error During migration");
+}
 app.Run();
