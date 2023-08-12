@@ -9,6 +9,7 @@ import { AuthGuard } from './_guard/auth.guard';
 import { TestErrorComponent } from './errors/test-error/test-error.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -16,7 +17,9 @@ const routes: Routes = [
     children:[
     {path:"messages",component:MessagesComponent},
     {path:"members",component:MemberListComponent},
-    {path:"member/:id",component:MemberDetailComponent},
+    {path:"members/:username",component:MemberDetailComponent},
+    {path:"member/edit",component:MemberEditComponent},
+
     {path:"lists",component:ListsComponent}
     ]
   },

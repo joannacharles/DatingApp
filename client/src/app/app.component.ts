@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{// inject http dependency here
    // this.
   }
   ngOnInit(): void {
-    this.getUsers()
+   // this.getUsers()
     this.setCurrentUser()
   }
   getUsers(){
